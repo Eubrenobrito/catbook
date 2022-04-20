@@ -5,10 +5,14 @@
       <input
         class="form-control"
         placeholder="nome do usuario"
-        [(ngModel)]="usario"
+        [(ngModel)]="usuario"
         name="usuario"
+        #campoUsuario="ngModel"
+        required
       />
       <!--[(ngModel)]="usuario" é Two-way binding-->
+
+      <app-mensagem *ngIf="campoUsuario.invalid" mensagem="Campo obrigatorio"></app-mensagem>
     </div>
     <div class="form-group">
       <input
@@ -17,8 +21,12 @@
         placeholder="senha"
         [(ngModel)]="senha"
         name="senha"
+        #campoSenha= "ngModel"
+        required
       />
+      <app-mensagem *ngIf="campoSenha.invalid" mensagem="Campo obrigatorio"></app-mensagem>
     </div>
+
 
     <button type="submit" class="btn btn-primary btn-block">login</button>
   </form>

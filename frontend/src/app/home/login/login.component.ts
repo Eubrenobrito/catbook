@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  usario ='';
+  usuario ='';
   senha ='';
 
   constructor(private authService: AutenticacaoService,
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
   login(){
-    this.authService.autentica(this.usario, this.senha).subscribe(()=>{
+    this.authService.autentica(this.usuario, this.senha).subscribe(()=>{
       this.router.navigate(['animais'])
     },
       (error) => {
