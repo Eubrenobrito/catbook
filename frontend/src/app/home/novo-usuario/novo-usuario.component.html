@@ -1,10 +1,22 @@
 <h4 class="text-center"> Registre-se e mostre seu pet no mundo.</h4>
 <form class=" form mt-4" [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
   <div class="form-group">
-    <input type="text" placeholder="email" class="form-control" formControlName="email">
+    <input type="text" placeholder="email" class="form-control" formControlName="email"/>
+    <app-mensagem *ngIf="novoUsuarioForm.get('email')?.errors?.['required'] &&
+    novoUsuarioForm.get('email')?.touched" mensagem="Email é obrigatório"></app-mensagem>
+    <app-mensagem *ngIf="novoUsuarioForm.get('email')?.touched" mensagem="Email no formato incorreto"></app-mensagem>
   </div>
   <div class="form-group">
-    <input type="text" placeholder="nome completo" class="form-control" formControlName="fullName">
+    <input
+      type="text"
+      placeholder="nome completo"
+      class="form-control"
+      formControlName="fullName"/>
+    <app-mensagem *ngIf="novoUsuarioForm.get('fullName')?.errors &&
+      novoUsuarioForm.get('fullName')?.touched"
+      mensagem="Nome incompleto">
+
+    </app-mensagem>
   </div>
   <div class="form-group">
     <input type="text" placeholder="usuário" class="form-control" formControlName="userName"/>
